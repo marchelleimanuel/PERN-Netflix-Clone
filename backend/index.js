@@ -12,6 +12,7 @@ const connectDB = () => {
         db.authenticate();
         console.log('Database successfully connected');
     } catch (error) {
+        console.log('Database failed to connect');
         console.log(error);
     }
 }

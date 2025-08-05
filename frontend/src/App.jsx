@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { Routes, Route } from "react-router-dom" 
+import Home from "./pages/Home/home"
+import Watchlist from "./pages/WatchList/Watchlist"
 
 function App() {
-
   return (
-    <>
-        <h1 className='text-4xl'>hai dekk</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/home" element={<Home/>}/>
+      <Route path="/watchlist" element={<Watchlist/>}/>
+    </Routes>
   )
 }
 
