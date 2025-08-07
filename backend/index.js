@@ -1,15 +1,17 @@
 import express from "express";
 import dotenv from "dotenv";
 import db from "./database/database.js";
+import User from "./models/User/userModel.js";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.APP_PORT || 3000;
 
-const connectDB = () => {
+const connectDB = async () => {
     try {
-        db.authenticate();
+        await db.sync({force: true});
+        await db.authenticate();
         console.log('Database successfully connected');
     } catch (error) {
         console.log('Database failed to connect');
