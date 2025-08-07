@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import db from "./database/database.js";
-import User from "./models/User/userModel.js";
 
 dotenv.config();
 
@@ -10,7 +9,7 @@ const PORT = process.env.APP_PORT || 3000;
 
 const connectDB = async () => {
     try {
-        await db.sync({force: true});
+        // await db.sync({force: true});
         await db.authenticate();
         console.log('Database successfully connected');
     } catch (error) {
