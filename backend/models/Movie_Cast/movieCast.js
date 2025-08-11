@@ -7,7 +7,8 @@ const MovieCast = db.define(
         id_movies_cast : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         },
         name : {
             type: DataTypes.STRING,

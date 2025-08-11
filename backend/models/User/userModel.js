@@ -12,23 +12,21 @@ const User = db.define(
         id_user : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        username : {
-            type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         },
         email : {
             type: DataTypes.STRING,
             allowNull: false
         },
-        role : {
+        password : {
             type: DataTypes.STRING,
             allowNull: false
         },
-        phone_number : {
+        role : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 'User'
         },
     },
     {

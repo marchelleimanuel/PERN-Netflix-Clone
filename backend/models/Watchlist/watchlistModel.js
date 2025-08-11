@@ -7,7 +7,8 @@ const Watchlist = db.define(
         id_watchlist : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         }
     },
     {

@@ -7,7 +7,8 @@ const Genre = db.define(
         id_genre : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         },
         name : {
             type: DataTypes.STRING,

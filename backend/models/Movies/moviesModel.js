@@ -11,7 +11,8 @@ const Movies = db.define(
         id_movies : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         },
         title : {
             type: DataTypes.STRING,

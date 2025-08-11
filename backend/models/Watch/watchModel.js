@@ -7,7 +7,8 @@ const Watch = db.define(
         id_watch : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         },
         // id_user : {
         //     type: DataTypes.INTEGER,

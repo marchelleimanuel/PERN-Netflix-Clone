@@ -8,7 +8,8 @@ const SubscriptionType = db.define(
         id_subscription_type : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            autoIncrement: true,
         },
         name : {
             type: DataTypes.STRING,
