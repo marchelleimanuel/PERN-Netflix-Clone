@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import RegisterService from '../../services/Register/registerService';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -54,6 +56,7 @@ const Register = () => {
                     <input type="password" className="border-1 border-black" onChange={onChangeConfirmPassword} />
                 </div>
                 <button className="border-1 border-black cursor-pointer mt-5 w-1/2" onClick={onClickRegister}>Register</button>
+                <p className='cursor-pointer' onClick={() => navigate('/login')}>Already have an account?</p>
             </div>
         </>
     )
