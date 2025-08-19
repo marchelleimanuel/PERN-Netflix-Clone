@@ -28,6 +28,9 @@ const User = db.define(
             allowNull: false,
             defaultValue: 'User'
         },
+        refreshToken : {
+            type: DataTypes.STRING,
+        }
     },
     {
         timestamps: true,

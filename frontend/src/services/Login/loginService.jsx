@@ -8,7 +8,8 @@ const LoginService = async (input) => {
         data: {
             email: input.email,
             password: input.password
-        }
+        },
+        withCredentials: true,
     }
 
     const response = await axios(config);
