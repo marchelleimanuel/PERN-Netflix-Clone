@@ -2,6 +2,10 @@ import { useState } from "react";
 import LoginService from "../../services/Login/loginService";
 import { useNavigate } from "react-router-dom";
 import loginBackground from '../../assets/login-background.jpg';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import TopBar from "../../components/TopBar/topBar";
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -38,13 +42,15 @@ const Login = () => {
 
     return (
         <>
-            <div className="flex">
+            <div>
+                <TopBar/>
                 <div
                     style={{
                         backgroundImage: `url(${loginBackground})`
                     }}
                     className={`bg-cover bg-center bg-no-repeat absolute w-full h-[100vh] -z-99`}
-                ></div>
+                    >
+                </div>
                 <div className="bg-black opacity-50 w-full h-[100vh] absolute"></div>
                 <div className="flex justify-center items-center h-[100vh] w-full">
                     <div className=" z-99 relative w-[450px] h-[550px]">
@@ -67,7 +73,7 @@ const Login = () => {
                                     Email
                                 </label>
                             </div>
-                            <div className="relative w-full mt-4">
+                            <div className="relative w-full mt-4 border-1border-red-500 ">
                                 <input 
                                     type={visiblePassword ? 'text' : 'password'}
                                     id="password" 
@@ -79,10 +85,15 @@ const Login = () => {
                                     htmlFor="password" 
                                     className="absolute left-3 top-1 text-gray-300 text-sm transition-all 
                                             peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-300 peer-placeholder-shown:text-base
-                                            peer-focus:top-1 peer-focus:text-gray-300 peer-focus:text-sm hover:cursor-text">
-                                    Password
+                                            peer-focus:top-1 peer-focus:text-gray-300 peer-focus:text-sm hover:cursor-text w-[93%]">
+                                        Password
                                 </label>
-                                <button className="cursor-pointer" onClick={() => setVisiblePassword(prev => !prev)}>tes</button>
+                                {password ? 
+                                    (!visiblePassword ? 
+                                        <FaEye className="cursor-pointer absolute top-5 left-[90%]  " onClick={() => setVisiblePassword(prev => !prev)}/> : 
+                                        <FaEyeSlash className="cursor-pointer absolute top-5 left-[90%] " onClick={() => setVisiblePassword(prev => !prev)}/> 
+                                    )
+                                : ''}
                             </div>
                             <button className="border-1 border-black cursor-pointer mt-5 w-full bg-[rgb(229,9,20)] font-bold h-10 rounded mb-5" onClick={onClickLogin}>Sign In</button>
                             <p className="text-gray-300">New to Netflix? <span className="font-bold cursor-pointer text-white" onClick={() => navigate('/register')}>Sign up now.</span></p>
