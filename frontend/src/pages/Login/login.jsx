@@ -43,7 +43,7 @@ const Login = () => {
     return (
         <>
             <div>
-                <TopBar/>
+                <TopBar isLogin={true}/>
                 <div
                     style={{
                         backgroundImage: `url(${loginBackground})`
@@ -95,8 +95,8 @@ const Login = () => {
                                     )
                                 : ''}
                             </div>
-                            <button className="border-1 border-black cursor-pointer mt-5 w-full bg-[rgb(229,9,20)] font-bold h-10 rounded mb-5" onClick={onClickLogin}>Sign In</button>
-                            <p className="text-gray-300">New to Netflix? <span className="font-bold cursor-pointer text-white" onClick={() => navigate('/register')}>Sign up now.</span></p>
+                            <button className="cursor-pointer mt-5 w-full bg-[rgb(229,9,20)] font-bold h-10 rounded mb-5" onClick={onClickLogin}>Sign In</button>
+                            <p className="text-gray-300">New to Netflix? <span className="font-bold cursor-pointer text-white" onClick={() => navigate('/get-started')}>Sign up now.</span></p>
                         </div>
                     </div>
 

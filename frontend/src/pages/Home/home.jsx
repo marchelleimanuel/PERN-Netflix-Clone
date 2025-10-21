@@ -1,5 +1,3 @@
-import axios from "axios";
-import { BASE_URL, TEST_URL } from "../../common/urlPath";
 
 const Home = () => {
     // const tesJWT = async () => {
