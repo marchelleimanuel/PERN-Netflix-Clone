@@ -4,11 +4,12 @@ import db from "../../database/database.js";
 const Watch = db.define(
     'Watch',
     {
-        id_watch : {
+        idWatch : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            tableName: 'id_watch'
         },
         // id_user : {
         //     type: DataTypes.INTEGER,
@@ -18,9 +19,10 @@ const Watch = db.define(
         //     type: DataTypes.INTEGER,
         //     allowNull: false
         // },
-        last_watched_at : {
+        lastWatchedAt : {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
+            tableName: 'last_watched_at'
         },
     },
     {

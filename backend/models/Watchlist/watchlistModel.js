@@ -4,11 +4,12 @@ import db from "../../database/database.js";
 const Watchlist = db.define(
     'Watchlist',
     {
-        id_watchlist : {
+        idWatchlist : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            tableName: 'id_watchlist'
         }
     },
     {

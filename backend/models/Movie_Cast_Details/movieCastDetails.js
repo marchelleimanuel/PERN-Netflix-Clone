@@ -4,15 +4,17 @@ import db from "../../database/database.js";
 const MoviesCastDetails = db.define(
     'MoviesCastDetails',
     {
-        id_movies : {
+        idMovies: {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_movies'
         },
-        id_movies_cast : {
+        idMoviesCast : {
             primaryKey:true,
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_movies_cast'
         },
     },
     {

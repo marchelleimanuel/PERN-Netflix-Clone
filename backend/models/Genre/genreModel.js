@@ -4,15 +4,17 @@ import db from "../../database/database.js";
 const Genre = db.define(
     'Genre',
     {
-        id_genre : {
+        idGenre : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            tableName: 'id_genre'
         },
         name : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'name'
         },
     },
     {

@@ -9,27 +9,32 @@ import Subscription from "../Subscription/subscriptionModel.js";
 const User = db.define(
     'User',
     {
-        id_user : {
+        idUser : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            tableName: 'id_user'
         },
         email : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'email'
         },
         password : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'password'
         },
         role : {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'User'
+            defaultValue: 'User',
+            tableName: 'role'
         },
         refreshToken : {
             type: DataTypes.STRING,
+            tableName: 'refresh_token'
         }
     },
     {

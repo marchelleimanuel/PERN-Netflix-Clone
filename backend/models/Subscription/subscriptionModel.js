@@ -5,15 +5,17 @@ import SubscriptionType from "../Subscription_Type/subscriptionTypeModel.js";
 const Subscription = db.define(
     'Subscription',
     {
-        id_subscription : {
+        idSubscription : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            tableName: 'id_subscription'
         },
-        id_subscription_type : {
+        idSubscriptionType : {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_subscription_type'
         },
     },
     {

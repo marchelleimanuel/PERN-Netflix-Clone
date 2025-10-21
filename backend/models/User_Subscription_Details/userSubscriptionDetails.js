@@ -4,23 +4,27 @@ import db from "../../database/database.js";
 const UserSubscriptionDetails = db.define(
     'UserSubscriptionDetails',
     {
-        id_subscription : {
+        idSubscription : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_subscription'
         },
-        id_user : {
+        idUser : {
             primaryKey: true,
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_user'
         },
-        start_subscription : {
+        startSubscription : {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
+            tableName: 'start_subscription'
         },
-        end_subscription: {
+        endSubscription: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
+            tableName: 'end_subscription'
         },
     },
     {

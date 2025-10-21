@@ -8,39 +8,47 @@ import MoviesCastDetails from "../Movie_Cast_Details/movieCastDetails.js";
 const Movies = db.define(
     'Movies',
     {
-        id_movies : {
+        idMovies : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            tableName: 'id_movies'
         },
         title : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'title'
         },
         description : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'description'
         },
-        duration_minutes: {
+        durationMinutes: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            tableName: 'duration_minutes'
         },
-        release_year : {
+        releaseYear : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'release_year'
         },
         rating : {
             type: DataTypes.DECIMAL,
-            allowNull: false
+            allowNull: false,
+            tableName: 'rating'
         },
-        poster_url : {
+        posterUrl : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'poster_url'
         },
-        movie_trailer : {
+        movieTrailer : {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            tableName: 'movie_trailer'
         },
     },
     {

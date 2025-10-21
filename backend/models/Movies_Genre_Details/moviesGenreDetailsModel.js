@@ -4,15 +4,17 @@ import db from "../../database/database.js";
 const MoviesGenreDetails = db.define(
     'MoviesGenreDetails',
     {
-        id_movies : {
+        idMovies : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_movies'
         },
-        id_genre : {
+        idGenre : {
             primaryKey: true,
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            tableName: 'id_genre'
         },
     },
     {
