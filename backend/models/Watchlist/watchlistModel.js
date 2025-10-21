@@ -9,7 +9,7 @@ const Watchlist = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_watchlist'
+            field: 'id_watchlist'
         }
     },
     {

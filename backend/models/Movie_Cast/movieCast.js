@@ -9,17 +9,17 @@ const MovieCast = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_movies_cast'
+            field: 'id_movies_cast'
         },
         name : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'name'
+            field: 'name'
         },
         photoUrl : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'photo_url'
+            field: 'photo_url'
         },
     },
     {

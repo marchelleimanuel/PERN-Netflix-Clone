@@ -8,23 +8,23 @@ const UserSubscriptionDetails = db.define(
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
-            tableName: 'id_subscription'
+            field: 'id_subscription'
         },
         idUser : {
             primaryKey: true,
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'id_user'
+            field: 'id_user'
         },
         startSubscription : {
             type: DataTypes.DATE,
             allowNull: false,
-            tableName: 'start_subscription'
+            field: 'start_subscription'
         },
         endSubscription: {
             type: DataTypes.DATE,
             allowNull: false,
-            tableName: 'end_subscription'
+            field: 'end_subscription'
         },
     },
     {

@@ -9,12 +9,12 @@ const Genre = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_genre'
+            field: 'id_genre'
         },
         name : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'name'
+            field: 'name'
         },
     },
     {

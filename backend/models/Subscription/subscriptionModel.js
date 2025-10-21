@@ -10,12 +10,12 @@ const Subscription = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_subscription'
+            field: 'id_subscription'
         },
         idSubscriptionType : {
             type: DataTypes.INTEGER,
             allowNull: false,
-            tableName: 'id_subscription_type'
+            field: 'id_subscription_type'
         },
     },
     {

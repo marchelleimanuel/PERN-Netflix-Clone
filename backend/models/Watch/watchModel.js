@@ -9,7 +9,7 @@ const Watch = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_watch'
+            field: 'id_watch'
         },
         // id_user : {
         //     type: DataTypes.INTEGER,
@@ -22,7 +22,7 @@ const Watch = db.define(
         lastWatchedAt : {
             type: DataTypes.DATE,
             allowNull: false,
-            tableName: 'last_watched_at'
+            field: 'last_watched_at'
         },
     },
     {

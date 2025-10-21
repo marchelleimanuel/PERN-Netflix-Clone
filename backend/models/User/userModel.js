@@ -14,27 +14,27 @@ const User = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_user'
+            field: 'id_user'
         },
         email : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'email'
+            field: 'email'
         },
         password : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'password'
+            field: 'password'
         },
         role : {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: 'User',
-            tableName: 'role'
+            field: 'role'
         },
         refreshToken : {
             type: DataTypes.STRING,
-            tableName: 'refresh_token'
+            field: 'refresh_token'
         }
     },
     {

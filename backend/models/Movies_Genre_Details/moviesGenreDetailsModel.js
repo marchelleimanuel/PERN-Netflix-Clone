@@ -8,13 +8,13 @@ const MoviesGenreDetails = db.define(
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
-            tableName: 'id_movies'
+            field: 'id_movies'
         },
         idGenre : {
             primaryKey: true,
             type: DataTypes.INTEGER,
             allowNull: false,
-            tableName: 'id_genre'
+            field: 'id_genre'
         },
     },
     {

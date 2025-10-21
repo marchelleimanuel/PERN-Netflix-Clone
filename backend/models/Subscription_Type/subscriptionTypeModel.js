@@ -10,22 +10,47 @@ const SubscriptionType = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_subscription_type'
+            field: 'id_subscription_type'
         },
-        name : {
+        type : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'name'
+            field: 'type'
+        },
+        resolution: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'resolution'
         },
         price : {
             type: DataTypes.INTEGER,
             allowNull: false,
-            tableName: 'price'
+            field: 'price'
         },
-        description : {
+        quality: {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'description'
+            field: 'quality'
+        },
+        supportedDevices: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            field: 'supported_devices'
+        },
+        devicesWatchAtTheSameTime: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'devices_watch_at_the_same_time'
+        },
+        downloadDevices: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'download_devices'
+        },
+        isSpatial : {
+            type: DataTypes.STRING(1),
+            allowNull: false,
+            field: 'is_spatial'
         },
     },
     {

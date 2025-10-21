@@ -13,42 +13,42 @@ const Movies = db.define(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            tableName: 'id_movies'
+            field: 'id_movies'
         },
         title : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'title'
+            field: 'title'
         },
         description : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'description'
+            field: 'description'
         },
         durationMinutes: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            tableName: 'duration_minutes'
+            field: 'duration_minutes'
         },
         releaseYear : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'release_year'
+            field: 'release_year'
         },
         rating : {
             type: DataTypes.DECIMAL,
             allowNull: false,
-            tableName: 'rating'
+            field: 'rating'
         },
         posterUrl : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'poster_url'
+            field: 'poster_url'
         },
         movieTrailer : {
             type: DataTypes.STRING,
             allowNull: false,
-            tableName: 'movie_trailer'
+            field: 'movie_trailer'
         },
     },
     {
