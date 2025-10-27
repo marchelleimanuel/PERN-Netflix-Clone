@@ -1,14 +1,18 @@
-import express, { response } from 'express';
+import express from 'express';
 import {GetStartedController, RegisterController} from '../controllers/Register/registerController.js';
 import LoginController from '../controllers/Login/loginController.js';
 import jwtAuth from '../middleware/verifyToken.js';
 import User from '../models/User/userModel.js';
+import { GetPlanSelectionController, GetSignUpStageController, UpdateSignUpStageController } from '../controllers/GetStarted/getStartedController.js';
 
 const router = express.Router();
 
-router.post('/get-started', GetStartedController);
+router.post('/getStarted', GetStartedController);
 router.post('/login', LoginController);
 router.post('/register', RegisterController)
+router.get('/planSelection', GetPlanSelectionController)
+router.get('/getSignUpStage', GetSignUpStageController)
+router.put('/updateSignUpStage', UpdateSignUpStageController)
 
 // router.get('/tes', jwtAuth, async (req, res) => {
 //     const allUser = await User.findAll();

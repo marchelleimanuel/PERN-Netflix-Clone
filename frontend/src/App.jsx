@@ -7,6 +7,7 @@ import Unregistered from "./pages/Register/Unregistered/unregistered"
 import Registered from "./pages/Register/Registered/registered"
 import ChoosePlan from "./pages/ChoosePlan/choosePlan"
 import PlanSelection from "./pages/ChoosePlan/planSelection"
+import Payment from "./pages/Payment/payment"
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <Route path="/get-started/registration" element={<Unregistered/>}/>
       <Route path="/get-started/login" element={<Registered/>}/>
       <Route path="/get-started/choose-plan" element={<ChoosePlan/>}/>
-      <Route path="/get-started/choose-plan/plan-selection" element={<PlanSelection/>}/>
+      <Route path="/get-started/plan-selection" element={<PlanSelection/>}/>
+      <Route path="/get-started/payment" element={<Payment/>}/>
     </Routes>
   )
 }

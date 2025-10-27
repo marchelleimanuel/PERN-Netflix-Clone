@@ -35,6 +35,10 @@ const User = db.define(
         refreshToken : {
             type: DataTypes.STRING,
             field: 'refresh_token'
+        },
+        signupStage : {
+            type: DataTypes.STRING,
+            field: 'signup_stage'
         }
     },
     {

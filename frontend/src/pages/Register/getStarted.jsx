@@ -1,31 +1,56 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { GetStartedService } from '../../services/Register/registerService';
 import registerBackground from '../../assets/register-background.jpg';
 import TopBar from '../../components/TopBar/topBar';
 import { useNavigate } from 'react-router-dom';
+import { getIsLoggedIn, getUserInfo } from '../../common/common';
+import { getSignUpStage } from '../../services/GetStarted/getStartedService';
 
 const GetStarted = () => {
     const navigate = useNavigate();
     const inputRef = useRef(null);
     const [email, setEmail] = useState('');
-    const onClickGetStarted = async () => {
-        if(!email) {
-            inputRef.current.focus();
-            return;
+    const user = getUserInfo();
+    const isLoggedIn = getIsLoggedIn();
+    const [userData, setUserData] = useState([]);
+
+    useEffect(() => {
+        
+        const getUserSignUpStage = async () => {
+            try {
+                const response = await getSignUpStage(user.email);
+                setUserData(response.data);
+            } catch (error) {
+                console.log(error)
+            }
         }
 
-        try {
-            const response = await GetStartedService(email);
-            
-            if(response.response_message === 'Registered') {
-                navigate('/get-started/login', {state: {email: email}})
-            }
-            else {
-                navigate('/get-started/registration', {state: {email: email}});
-            }
+        getUserSignUpStage();
+    }, []);
 
-        } catch (error) {
-            console.log(error.response.data.response_message);
+    const onClickGetStarted = async (input) => {
+        if(input === 'finish') {
+            navigate(`/get-started/${userData.signupStage}`)
+        }
+        else {
+            if(!email) {
+                inputRef.current.focus();
+                return;
+            }
+    
+            try {
+                const response = await GetStartedService(email);
+                
+                if(response.response_message === 'Registered') {
+                    navigate('/get-started/login', {state: {email: email}})
+                }
+                else {
+                    navigate('/get-started/registration', {state: {email: email}});
+                }
+    
+            } catch (error) {
+                console.log(error.response.data.response_message);
+            }
         }
 
     }
@@ -54,24 +79,36 @@ const GetStarted = () => {
                                 <p className='text-xl/15 font-bold'>Starts at IDR 54,000. Cancel anytime.</p>
                                 <p className='text-[16px]/15'>Ready to watch? Enter your email to create or restart your membership.</p>
                                 <div className='flex w-full px-20 pb-2'>
-                                    <div className="relative w-full">
-                                        <input 
-                                            ref={inputRef}
-                                            type="text" 
-                                            id="email" 
-                                            className="peer border border-gray-400 rounded px-3 pt-5 pb-2 w-full placeholder-transparent text-white "  
-                                            placeholder="Email Address"
-                                            onChange={onChangeEmail} 
-                                        />
-                                        <label 
-                                            htmlFor="email" 
-                                            className="absolute left-3 top-1 text-gray-300 text-sm transition-all 
-                                                    peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-300 peer-placeholder-shown:text-base
-                                                    peer-focus:top-1 peer-focus:text-gray-300 peer-focus:text-sm hover:cursor-text">
-                                            Email Address
-                                        </label>
-                                    </div>
-                                    <button className="cursor-pointer w-[60%] bg-[rgb(229,9,20)] font-medium h-[54px] rounded text-[27px] ml-2 hover:opacity-90 transition-all" onClick={onClickGetStarted}>Get Started</button>
+                                    {isLoggedIn ? (
+                                        <>
+                                            <div className='relative w-full'>
+                                                <button className="cursor-pointer w-[60%] bg-[rgb(229,9,20)] font-medium h-[54px] rounded text-[27px] ml-2 hover:opacity-90 transition-all" onClick={() => onClickGetStarted('finish')}>Finish Sign Up</button>
+                                            </div>
+                                        </>
+                                    ) : 
+                                    (
+                                        <>
+                                            <div className="relative w-full">
+                                                <input 
+                                                    ref={inputRef}
+                                                    type="text" 
+                                                    id="email" 
+                                                    className="peer border border-gray-400 rounded px-3 pt-5 pb-2 w-full placeholder-transparent text-white "  
+                                                    placeholder="Email Address"
+                                                    onChange={onChangeEmail} 
+                                                />
+                                                <label 
+                                                    htmlFor="email" 
+                                                    className="absolute left-3 top-1 text-gray-300 text-sm transition-all 
+                                                            peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-300 peer-placeholder-shown:text-base
+                                                            peer-focus:top-1 peer-focus:text-gray-300 peer-focus:text-sm hover:cursor-text">
+                                                    Email Address
+                                                </label>
+                                            </div>
+                                            <button className="cursor-pointer w-[60%] bg-[rgb(229,9,20)] font-medium h-[54px] rounded text-[27px] ml-2 hover:opacity-90 transition-all" onClick={() => onClickGetStarted('signup')}>Get Started</button>
+                                        </>
+                                    )
+                                }
                                 </div>
                             </div>
                         </div>

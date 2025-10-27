@@ -4,6 +4,12 @@ import User from "../../models/User/userModel.js";
 
 export const RegisterController = async (req, res) => {
     const { email, password } = req.body;
+
+    const user = await User.findOne({
+        where: {
+            email: email
+        }
+    })
     
     const regexEmailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
     if(!regexEmailValidation.test(email)) return res.status(400).json({
@@ -11,6 +17,11 @@ export const RegisterController = async (req, res) => {
         response_message: 'Email is not valid'
     });
 
+    if(user) return res.status(400).json({
+        response_code: ERROR_CODE,
+        response_message: 'User already registered'
+    });
+    
     if(password.length < 10) return res.status(400).json({
         response_code: ERROR_CODE,
         response_message: 'Password must be atleast 8 characters'
@@ -21,8 +32,8 @@ export const RegisterController = async (req, res) => {
     const newUser = await User.create({
         email: email,
         password: hashedPassword,
+        signupStage: 'choose-plan'
     });
-    console.log(newUser);
 
     const data = {
         id_user: newUser.dataValues.id_user,

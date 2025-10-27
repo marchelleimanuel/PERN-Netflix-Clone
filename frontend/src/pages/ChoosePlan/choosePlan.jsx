@@ -7,7 +7,7 @@ const ChoosePlan = () => {
     const navigate = useNavigate();
 
     const onClickNext = () => {
-        navigate('/get-started/choose-plan/plan-selection');
+        navigate('/get-started/plan-selection');
     }
 
     return (
