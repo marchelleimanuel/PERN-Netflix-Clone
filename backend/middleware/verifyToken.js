@@ -1,30 +1,24 @@
-import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import { ERROR_CODE, SUCCESS_CODE } from '../common/common.js';
 dotenv.config();
+import { ERROR_CODE, SUCCESS_CODE } from '../common/common.js';
+import jwt from 'jsonwebtoken';
 
-const jwtAuth =  (req, res, next) => {
-    const token = req.cookies.token;
-    if(!token) {
-        return res.status(401).json({
-            response_code: ERROR_CODE,
-            message: 'No token provided'
-        });
-    }
+const authenticate =  (req, res, next) => {
+    const accessToken = req.cookies['access_token'];
+    if(!accessToken) return res.status(401);
 
-    try {
-        const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
-        req.user = decoded;
-        next();
-    } catch (error) {
-        return res.status(400).json({
-            response_code: ERROR_CODE,
-            message: 'Invalid or expired token'
-        });
-    }
-
-
-
+    jwt.verify(accessToken, process.env.ACCESS_TOKEN, (err, decoded) => {
+        if(err) {
+            return res.status(401).json({
+                response_code: ERROR_CODE,
+                response_message: 'Access Token is not Valid or Expired'
+            });
+        } 
+        else {
+            req.user = decoded;
+            next();
+        }
+    });
 }
 
-export default jwtAuth;
+export default authenticate;

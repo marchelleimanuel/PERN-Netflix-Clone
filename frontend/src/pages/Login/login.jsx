@@ -23,8 +23,10 @@ const Login = () => {
             const response = await LoginService(input);
             
             if(response.response_code === 'SUCCESS') {
-                console.log(response);
+                localStorage.setItem('userLogin', JSON.stringify(response.data));
+                localStorage.setItem('isLoggedIn', JSON.stringify(true));
                 navigate('/home')
+                console.log('ini token', response.data);
             }
 
         } catch (error) {
@@ -64,6 +66,7 @@ const Login = () => {
                                     className="peer border border-gray-400 rounded px-3 pt-5 pb-2 w-full placeholder-transparent text-white"  
                                     placeholder="Email"
                                     onChange={onChangeEmail} 
+                                    // value={'marchelleimanuel@gmail.com'} // jgn lupa apus
                                 />
                                 <label 
                                     htmlFor="email" 
@@ -80,6 +83,7 @@ const Login = () => {
                                     className="peer border border-gray-400 rounded px-3 pt-5 pb-2 w-full placeholder-transparent text-white"  
                                     placeholder="Password"
                                     onChange={onChangePassword} 
+                                    // value={'marchelleimanuel123'} // jgn lupa apus
                                 />
                                 <label 
                                     htmlFor="password" 

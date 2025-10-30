@@ -8,6 +8,8 @@ import Registered from "./pages/Register/Registered/registered"
 import ChoosePlan from "./pages/ChoosePlan/choosePlan"
 import PlanSelection from "./pages/ChoosePlan/planSelection"
 import Payment from "./pages/Payment/payment"
+import Private from "./pages/Home/private"
+import Public from "./pages/Home/public"
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Route path="/" element={<Login/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/home" element={<Home/>}/>
+      <Route path="/private-page" element={<Private/>}/>
+      <Route path="/public" element={<Public/>}/>
       <Route path="/watchlist" element={<Watchlist/>}/>
       <Route path="/get-started" element={<GetStarted/>}/>
       <Route path="/get-started/registration" element={<Unregistered/>}/>

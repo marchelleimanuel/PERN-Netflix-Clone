@@ -14,8 +14,6 @@ const LoginController = async (req, res) => {
         }
     });
 
-    // console.log('ini user', user);
-
     if(!user) return res.status(400).json({
         response_code: ERROR_CODE,
         response_message: 'Email is not registered'
@@ -27,18 +25,33 @@ const LoginController = async (req, res) => {
         response_message: 'Password is incorrect'
     })
 
-    const token = jwt.sign({id_user: user.dataValues.id_user, email: user.dataValues.email}, process.env.SECRET_TOKEN, {expiresIn: '10s'});
+    const accessToken = jwt.sign({id_user: user.dataValues.id_user, email: user.dataValues.email}, process.env.ACCESS_TOKEN, {expiresIn: '3s'});
+    const refreshToken = jwt.sign({id_user: user.dataValues.id_user, email: user.dataValues.email}, process.env.REFRESH_TOKEN, {expiresIn: '30d'});
 
-    res.cookie("token", token, {
-        httpOnly: true,
-        sameSite: 'None',
-        secure: true
+    res.cookie("access_token", accessToken, {
+        httpOnly: true
     })
+
+    res.cookie("refresh_token", refreshToken, {
+        httpOnly: true
+    })
+
+    await user.update({
+        refreshToken: refreshToken
+    })
+
+    let userLoggedIn = {
+        id_user: user.idUser,
+        role: user.role,
+        email: user.email,
+        access_token: accessToken,
+        refresh_token: refreshToken
+    }
     
     return res.status(200).json({
         response_code: SUCCESS_CODE,
         response_message: 'Login Success!',
-        token: token
+        data: userLoggedIn,
     })
 }
 
