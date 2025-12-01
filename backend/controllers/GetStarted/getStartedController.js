@@ -53,7 +53,7 @@ export const UpdateSignUpStageController = async (req, res) => {
         });
 
         await user.update({
-            signupStage: 'payment'
+            signupStage: 'checkout'
         });
 
         return res.status(200).json({

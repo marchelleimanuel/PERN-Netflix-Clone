@@ -4,7 +4,7 @@ import { useState } from "react";
 import { CardLabel } from "./cardLabel";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
-const PlanSelectionCard = () => {
+const PlanSelectionCard = (props) => {
 
     const [planSelectionData, setPlanSelectionData] = useState([]);
     const [isClicked, setIsClicked] = useState({
@@ -26,7 +26,6 @@ const PlanSelectionCard = () => {
         }
 
         getPlanSelection();
-
     }, []);
 
     const chosenPlan = (data) => {
@@ -37,6 +36,11 @@ const PlanSelectionCard = () => {
             Premium: false,
             [data]: true
         });
+
+        planSelectionData.map((plan) => {
+            return plan.type === data ? props.fetchData(plan) : [];
+        });
+
     }
 
     return (

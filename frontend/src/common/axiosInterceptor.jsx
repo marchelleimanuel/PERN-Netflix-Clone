@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, REFRESH_ACCESS_TOKEN } from "./urlPath";
+import { BASE_URL, REFRESH_ACCESS_TOKEN_URL } from "./urlPath";
 import { getUserInfo } from "./common";
 import { logOut } from "../services/Home/homeService";
 
@@ -25,7 +25,7 @@ api.interceptors.response.use(
         const originalRequest = error.config;
 
         // supaya ga rekursif atau infinite loop waktu mau Refresh Access Token
-        if (originalRequest.url.includes(REFRESH_ACCESS_TOKEN)) {
+        if (originalRequest.url.includes(REFRESH_ACCESS_TOKEN_URL)) {
             console.log("Skipping interceptor for refresh endpoint");
             
             // ini .reject digunain supaya nanti after return errornya, mastiin nextnya langsung masuk ke Catch block
@@ -36,7 +36,7 @@ api.interceptors.response.use(
         if (error.response?.status === 401) {
             try {
                 // mau refresh Access Token
-                await api.post(REFRESH_ACCESS_TOKEN);
+                await api.post(REFRESH_ACCESS_TOKEN_URL);
                 return api(originalRequest);
             } catch (refreshError) {
                 console.log("❌ Refresh token invalid, please login again");

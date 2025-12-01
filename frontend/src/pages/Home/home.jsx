@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { BASE_URL, get_private, REFRESH_ACCESS_TOKEN } from "../../common/urlPath";
 import axios from "axios";
 import api from "../../common/axiosInterceptor";
 
@@ -7,19 +6,19 @@ const Home = () => {
 
     const navigate = useNavigate();
 
-    const tesJWT = async () => {
-        try {
-            const response = await api.get(get_private);
+    // const tesJWT = async () => {
+    //     try {
+    //         const response = await api.get(get_private);
 
-            if (response.data.response === "berhasil kok") {
-            console.log("ini data dari backend:", response.data.data);
-            navigate("/private-page");
-            }
-        } catch (error) {
-            if(error.response?.data?.response_message.includes('Refresh Token')) navigate('/login');
-            console.log("❌ Request failed:", error.response?.data?.response_message);
-        }
-    };
+    //         if (response.data.response === "berhasil kok") {
+    //             console.log("ini data dari backend:", response.data.data);
+    //             navigate("/private-page");
+    //         }
+    //     } catch (error) {
+    //         if(error.response?.data?.response_message.includes('Refresh Token')) navigate('/login');
+    //         console.log("❌ Request failed:", error.response?.data?.response_message);
+    //     }
+    // };
 
     // const tesJWT = async () => {
     //     try {
@@ -40,7 +39,7 @@ const Home = () => {
     //         try {
     //             const config = {
     //                 method: 'post',
-    //                 url: BASE_URL + REFRESH_ACCESS_TOKEN,
+    //                 url: BASE_URL + REFRESH_ACCESS_TOKEN_URL,
     //                 withCredentials: true
     //             }
 

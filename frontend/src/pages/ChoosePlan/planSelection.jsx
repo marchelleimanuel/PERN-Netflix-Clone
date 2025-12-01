@@ -3,21 +3,29 @@ import { useNavigate } from "react-router-dom";
 import PlanSelectionCard from "../../components/Card/PlanSelectionCard/planSelectionCard";
 import { getUserInfo } from "../../common/common";
 import { updateSignUpStage } from "../../services/GetStarted/getStartedService";
+import { useState } from "react";
 
 const PlanSelection = () => {
 
     const navigate = useNavigate();
     const user = getUserInfo();
+    const [planSelectionData, setPlanSelectionData] = useState([]);
 
     const onClickNext = async () => {
         try {
+
             const response = await updateSignUpStage(user);
             const data = response.data;
-            navigate(`/get-started/${data.signupStage}`);
+            navigate(`/get-started/${data.signupStage}`, {state: {selectedPlan: planSelectionData}});
+            // console.log('ini data finalnya ', planSelectionData)
         } catch (error) {
             console.log(error);
 
         }
+    }
+
+    const getSelectionPlan = (dataPlan) => {
+        setPlanSelectionData(dataPlan);
     }
 
     return (
@@ -29,7 +37,7 @@ const PlanSelection = () => {
                         <p>Step <span className="font-bold">2</span> of <span className="font-bold">3</span></p>
                         <h1 className="text-[2rem]/10 font-bold mb-10">Choose the plan that's right for you</h1>
                         <div className="grid grid-cols-4 gap-4 min-h-[600px] ">
-                            <PlanSelectionCard/>
+                            <PlanSelectionCard fetchData={getSelectionPlan} />
                         </div>
                         <div className="mt-5 text-gray-500">
                             <p>HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to your internet service and device capabilities. Not all content is available in all resolutions. See our Terms of Use for more details.</p>
